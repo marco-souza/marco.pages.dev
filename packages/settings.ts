@@ -1,5 +1,5 @@
 export const site = {
-  homepage: "https://marco.pages.dev",
+  homepage: "https://marco-pages-dev.pages.dev/",
   title: "Welcome to a the new world 🌎",
   description:
     "This is your PodCodar react-router Framework bootstrap, to facilitate your project criation",
