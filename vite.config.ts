@@ -1,33 +1,32 @@
-import pages from '@hono/vite-cloudflare-pages'
-import honox from 'honox/vite'
-import adapter from '@hono/vite-dev-server/cloudflare'
-import client from 'honox/vite/client'
-import { defineConfig } from 'vite'
+import pages from "@hono/vite-cloudflare-pages";
+import honox from "honox/vite";
+import adapter from "@hono/vite-dev-server/cloudflare";
+import client from "honox/vite/client";
+import { defineConfig } from "vite";
 
 const baseConfig = {
   resolve: {
     alias: {
-      '#': './',
-      '@': './app',
-    }
+      "#": "./",
+      "@": "./app",
+    },
   },
-}
+};
 
 export default defineConfig(({ mode }) => {
-  if (mode === 'client') {
+  if (mode === "client") {
     return {
       ...baseConfig,
-      plugins: [client()]
-    }
-  } else {
-    return {
-      ...baseConfig,
-      plugins: [
-        honox({
-          devServer: { adapter }
-        }),
-        pages()
-      ],
-    }
+      plugins: [client()],
+    };
   }
-})
+  return {
+    ...baseConfig,
+    plugins: [
+      honox({
+        devServer: { adapter },
+      }),
+      pages(),
+    ],
+  };
+});

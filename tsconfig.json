@@ -4,15 +4,8 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "strict": true,
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
-    "types": [
-      "@cloudflare/workers-types",
-      "vite/client",
-      "vitest/globals"
-    ],
+    "lib": ["ESNext", "DOM"],
+    "types": ["vite/client", "vitest/globals"],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
     "baseUrl": "./",
@@ -20,5 +13,5 @@
       "#/*": ["./*"],
       "@/*": ["./app/*"]
     }
-  },
+  }
 }

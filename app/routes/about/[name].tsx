@@ -1,8 +1,8 @@
-import { createRoute } from 'honox/factory'
+import { createRoute } from "honox/factory";
 
 export default createRoute((c) => {
-  const name = c.req.param('name')
+  const name = c.req.param("name");
   return c.json({
-    'your name is': name,
-  })
-})
+    "your name is": name,
+  });
+});
