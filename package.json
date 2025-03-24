@@ -1,32 +1,33 @@
 {
-  "name": "@marco-souza/honox-cloudflare-template",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+	"name": "@marco-souza/honox-cloudflare-template",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"fmt": "biome format --fix",
+		"lint": "biome lint --fix --unsafe",
 
-    "postinstall": "bun run w:typegen",
+		"postinstall": "bun run w:typegen",
 
-    "w": "wrangler",
-    "w:secret": "wrangler pages secret",
-    "w:typegen": "cp .env .dev.vars && wrangler types",
-    "typegen": "wrangler generate typescript",
-    "preview": "wrangler pages dev",
-    "deploy": "bun run build && wrangler pages deploy"
-  },
-  "dependencies": {
-    "hono": "^4.7.5",
-    "honox": "^0.1.38"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@hono/vite-build": "^1.2.0",
-    "@hono/vite-cloudflare-pages": "^0.4.2",
-    "@hono/vite-dev-server": "^0.18.2",
-    "vite": "^6.2.3",
-    "wrangler": "^4.4.0"
-  },
-  "trustedDependencies": [
-    "@biomejs/biome"
-  ]
+		"w": "wrangler",
+		"w:secret": "wrangler pages secret",
+		"w:typegen": "cp .env .dev.vars && wrangler types",
+
+		"typegen": "wrangler generate typescript",
+		"preview": "wrangler pages dev",
+		"deploy": "bun run build && wrangler pages deploy"
+	},
+	"dependencies": {
+		"hono": "^4.7.5",
+		"honox": "^0.1.38"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@hono/vite-build": "^1.2.0",
+		"@hono/vite-cloudflare-pages": "^0.4.2",
+		"@hono/vite-dev-server": "^0.18.2",
+		"vite": "^6.2.3",
+		"wrangler": "^4.4.0"
+	},
+	"trustedDependencies": ["@biomejs/biome"]
 }
