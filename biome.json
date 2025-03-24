@@ -9,6 +9,7 @@
     "ignoreUnknown": false,
     "ignore": [
       "node_modules",
+      "public",
       "./bun.lock",
       "./dist",
       "./worker-configuration.d.ts",
