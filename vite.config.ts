@@ -1,32 +1,23 @@
 import pages from "@hono/vite-cloudflare-pages";
-import honox from "honox/vite";
 import adapter from "@hono/vite-dev-server/cloudflare";
-import client from "honox/vite/client";
+import tailwindcss from "@tailwindcss/vite";
+import honox from "honox/vite";
 import { defineConfig } from "vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 
-const baseConfig = {
-  resolve: {
-    alias: {
-      "#": "./",
-      "@": "./app",
-    },
-  },
-};
-
-export default defineConfig(({ mode }) => {
-  if (mode === "client") {
-    return {
-      ...baseConfig,
-      plugins: [client()],
-    };
-  }
+export default defineConfig((c) => {
+  console.log(c);
   return {
-    ...baseConfig,
     plugins: [
+      tsconfigPaths(),
       honox({
+        client: {
+          input: ["/app/styles.css"],
+        },
         devServer: { adapter },
       }),
       pages(),
+      tailwindcss(),
     ],
   };
 });

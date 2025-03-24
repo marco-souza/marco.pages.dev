@@ -8,7 +8,7 @@
     "types": ["vite/client", "vitest/globals"],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "#/*": ["./*"],
       "@/*": ["./app/*"]
