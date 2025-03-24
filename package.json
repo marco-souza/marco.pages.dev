@@ -6,6 +6,7 @@
     "dev": "vite",
     "tests": "vitest",
     "build": "vite build",
+    "e2e": "playwright test",
     "fmt": "biome format --fix",
     "lint": "biome lint --fix --unsafe",
     "encrypt": "gpg -c .env",
@@ -26,7 +27,9 @@
     "@hono/vite-build": "^1.2.0",
     "@hono/vite-cloudflare-pages": "^0.4.2",
     "@hono/vite-dev-server": "^0.18.2",
+    "@playwright/test": "^1.51.1",
     "@tailwindcss/vite": "^4.0.15",
+    "@types/node": "^22.13.13",
     "daisyui": "^5.0.9",
     "lefthook": "^1.11.4",
     "tailwindcss": "^4.0.15",
@@ -35,5 +38,7 @@
     "vitest": "^3.0.9",
     "wrangler": "^4.4.0"
   },
-  "trustedDependencies": ["@biomejs/biome"]
+  "trustedDependencies": [
+    "@biomejs/biome"
+  ]
 }

@@ -52,5 +52,5 @@ pre-commit:
       glob: "**/*.{js,ts,jsx,tsx}"
       stage_fixed: true
 
-    - run: bun run tests
+    - run: CI=true bun run tests
       glob: "**/*.{js,ts,jsx,tsx}"

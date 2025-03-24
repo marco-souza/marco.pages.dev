@@ -18,7 +18,7 @@ jobs:
           bun-version: latest
       - name: Run unit-tests
         run: |
-          bun install --frozen-lockfile && bun run tests
+          bun install --frozen-lockfile && CI=true bun run tests
 
   integration-tests:
     timeout-minutes: 300
