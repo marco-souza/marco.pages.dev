@@ -25,6 +25,7 @@
     "@hono/vite-dev-server": "^0.18.2",
     "@tailwindcss/vite": "^4.0.15",
     "daisyui": "^5.0.9",
+    "lefthook": "^1.11.4",
     "tailwindcss": "^4.0.15",
     "vite": "^6.2.3",
     "vite-tsconfig-paths": "^5.1.4",
