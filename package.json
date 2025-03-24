@@ -7,7 +7,7 @@
     "fmt": "biome format --fix",
     "lint": "biome lint --fix --unsafe",
 
-    "postinstall": "bun run w:typegen",
+    "postinstall": "lefthook install && bun run w:typegen",
 
     "w": "wrangler",
     "w:secret": "wrangler pages secret",

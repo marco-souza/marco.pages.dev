@@ -2,7 +2,8 @@
 // Runtime types generated with workerd@1.20250320.0 2025-03-24 nodejs_compat
 declare namespace Cloudflare {
 	// eslint-disable-next-line @typescript-eslint/no-empty-interface,@typescript-eslint/no-empty-object-type
-	type Env = {}
+	interface Env {
+	}
 }
 interface Env extends Cloudflare.Env {}
 
