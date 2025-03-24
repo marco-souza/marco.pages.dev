@@ -59,24 +59,6 @@ bun run deploy
 - `preview`: Previews the application using Wrangler.
 - `deploy`: Builds and deploys the application.
 
-## Dependencies
-
-- **Hono**: ^4.7.5
-- **Honox**: ^0.1.38
-
-### DevDependencies
-
-- **@biomejs/biome**: ^1.9.4
-- **@hono/vite-build**: ^1.2.0
-- **@hono/vite-cloudflare-pages**: ^0.4.2
-- **@hono/vite-dev-server**: ^0.18.2
-- **@tailwindcss/vite**: ^4.0.15
-- **DaisyUI**: ^5.0.9
-- **TailwindCSS**: ^4.0.15
-- **Vite**: ^6.2.3
-- **Vitest**: ^3.0.9
-- **Wrangler**: ^4.4.0
-
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request for any improvements or bug fixes.
