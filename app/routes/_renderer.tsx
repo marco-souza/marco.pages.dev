@@ -14,7 +14,10 @@ export default jsxRenderer(({ children }) => {
         {title ? <title>{title}</title> : <></>}
 
         <Link href="/app/styles.css" rel="stylesheet" />
+
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </head>
+
       <body>{children}</body>
     </html>
   );
