@@ -8,11 +8,11 @@
     "fmt": "biome format --fix",
     "lint": "biome lint --fix --unsafe",
     "encrypt": "gpg -c .env",
-    "decrypt": "gpg -d .env.gpg > .env; bun run w:typegen",
+    "decrypt": "gpg -d .env.gpg > .env && bun run w:typegen",
     "postinstall": "lefthook install && bun run w:typegen",
     "w": "wrangler",
     "w:secret": "wrangler pages secret",
-    "w:typegen": "cp .env .dev.vars && wrangler types",
+    "w:typegen": "[ -f .env ] && cp .env .dev.vars; wrangler types",
     "preview": "wrangler pages dev",
     "deploy": "bun run build && wrangler pages deploy"
   },
