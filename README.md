@@ -1,4 +1,3 @@
-=======
 # Honox Cloudflare Template
 
 This project is a template for deploying applications using Honox on Cloudflare Pages. It leverages modern tools like Vite, Tailwind CSS, and Wrangler for a seamless development and deployment experience.
@@ -11,6 +10,7 @@ This project is a template for deploying applications using Honox on Cloudflare 
 - **Environment Management**: Manage environment variables and secrets securely using Wrangler.
 - **Automated Testing**: Includes a test suite powered by Vitest for ensuring code quality.
 - **Code Quality Tools**: Integrated with Biome for code formatting and linting to maintain a clean codebase.
+- **End-to-End Testing**: Includes Playwright for comprehensive end-to-end testing.
 - **Preview and Debugging**: Preview applications locally and debug with Wrangler's preview feature.
 - **Extensible**: Easily extendable with additional plugins and configurations to suit various project needs.
 
@@ -49,6 +49,7 @@ bun run deploy
 - `dev`: Starts the Vite development server.
 - `tests`: Runs the test suite using Vitest.
 - `build`: Builds the application for production.
+- `e2e`: Runs end-to-end tests using Playwright.
 - `fmt`: Formats the code using Biome.
 - `lint`: Lints the codebase and fixes issues.
 - `postinstall`: Runs post-installation scripts.
@@ -83,4 +84,3 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 ## License
 
 This project is licensed under the MIT License.
-```
