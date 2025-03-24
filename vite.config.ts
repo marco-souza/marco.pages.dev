@@ -10,6 +10,7 @@ export default defineConfig((c) => {
   return {
     plugins: [
       tsconfigPaths(),
+      tailwindcss(),
       honox({
         client: {
           input: ["/app/styles.css"],
@@ -17,7 +18,6 @@ export default defineConfig((c) => {
         devServer: { adapter },
       }),
       pages(),
-      tailwindcss(),
     ],
   };
 });
