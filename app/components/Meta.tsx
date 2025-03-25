@@ -6,8 +6,12 @@ export function Meta() {
   return (
     <>
       <meta charset="UTF-8" />
+
       <title>{title}</title>
       <meta name="description" content={description} />
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
       <link rel="icon" type="image/svg+xml" href={images.icon} />
       <meta name="robots" content="index, follow" />
 
