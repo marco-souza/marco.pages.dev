@@ -1,4 +1,4 @@
-name = "honox-cloudflare-template"
+name = "marco-pages-dev"
 
 pages_build_output_dir = "./dist"
 
