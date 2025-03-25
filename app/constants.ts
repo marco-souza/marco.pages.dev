@@ -23,7 +23,14 @@ export const configs = {
   contact_me: contactEmail(),
 
   site: {
-    title: "Welcome to hono!",
+    title: "Welcome to Marco's lab!",
+    description: "A place where I share my thoughts and projects.",
+    pageURL: "https://marco-pages-dev.pages.dev",
+    images: {
+      icon: "/favicon.ico",
+      og: "/images/og.png",
+      logo: "/images/logo.png",
+    },
   },
 
   links: {

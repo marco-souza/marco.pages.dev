@@ -3,10 +3,9 @@ import { Link } from "honox/server";
 import { Layout } from "@/components/Layout";
 import { getThemeCookie } from "@/shared/theme";
 import { AUTH_KEYS } from "@/shared/auth";
-import { configs } from "@/constants";
 import { getCookie } from "hono/cookie";
-
-const { title } = configs.site;
+import { Meta } from "@/components/Meta";
+import { configs } from "../constants";
 
 export default jsxRenderer(({ children }) => {
   const ctx = useRequestContext();
@@ -18,15 +17,13 @@ export default jsxRenderer(({ children }) => {
   return (
     <html lang="en">
       <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <Meta />
 
-        {title ? <title>{title}</title> : <></>}
+        {/* favicon */}
+        <Link rel="icon" href={configs.site.images.icon} type="image/x-icon" />
 
+        {/* styles */}
         <Link href="/app/styles.css" rel="stylesheet" />
-        <script src="/static/js/htmx.min.js" />
-
-        <Link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </head>
 
       <Layout
@@ -36,6 +33,8 @@ export default jsxRenderer(({ children }) => {
       >
         {children}
       </Layout>
+
+      <script src="/static/js/htmx.min.js" />
     </html>
   );
 });
