@@ -28,8 +28,8 @@ export const configs = {
     pageURL: "https://marco-pages-dev.pages.dev",
     images: {
       icon: "/favicon.ico",
-      og: "/images/og-512.png",
-      logo: "/images/logo.png",
+      og: "/images/marco.og.png",
+      logo: "/images/marco.logo.png",
     },
   },
 
