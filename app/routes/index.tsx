@@ -20,7 +20,7 @@ export default createRoute((c) => {
         class="btn btn-outline"
         hx-post="/"
         hx-trigger="click"
-        hx-target="this"
+        hx-target="body"
         hx-swap="outerHTML"
       >
         Button clicked {counter} times
