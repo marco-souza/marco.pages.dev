@@ -26,6 +26,7 @@ class GitHub {
 
     const resp = await fetch("https://api.github.com/user", {
       headers: {
+        ...headers,
         Authorization: `token ${token}`,
       },
     });
@@ -38,7 +39,8 @@ class GitHub {
 
   async fetchProfile() {
     // fetch
-    const resp = await fetch(`https://api.github.com/users/${this.username}`);
+    const profileURL = `https://api.github.com/users/${this.username}`;
+    const resp = await fetch(profileURL, { headers });
     const body = await resp.json();
 
     // parse
@@ -47,7 +49,7 @@ class GitHub {
 
   async fetchResume() {
     // fetch
-    const resp = await fetch(configs.github.resume);
+    const resp = await fetch(configs.github.resume, { headers });
     const body = await resp.text();
 
     // TODO: parse
@@ -55,5 +57,9 @@ class GitHub {
     return body;
   }
 }
+
+const headers = {
+  "User-Agent": "hono",
+};
 
 export const github = new GitHub();
