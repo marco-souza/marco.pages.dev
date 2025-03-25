@@ -1,5 +1,7 @@
 import { getCookie, setCookie } from "hono/cookie";
 import { createRoute } from "honox/factory";
+import { github } from "@/services/github";
+import { GitHubProfileView } from "@/components/GitHubProfile";
 
 export const POST = createRoute(async (c) => {
   const counter = getCookie(c, "counter")?.toString() ?? "";
@@ -9,22 +11,24 @@ export const POST = createRoute(async (c) => {
   return c.redirect("/");
 });
 
-export default createRoute((c) => {
+export default createRoute(async (c) => {
   const counter = getCookie(c, "counter")?.toString() ?? "0";
-  return c.render(
-    <div>
-      <h1 class="text-3xl font-bold underline">Hello world 🚀!</h1>
+  // TODO: cache profile
+  const profile = await github.fetchProfile();
 
+  return c.render(
+    <>
+      <GitHubProfileView profile={profile} />
       <button
         type="button"
-        class="btn btn-outline"
+        class="btn btn-ghost flex mx-auto"
         hx-post="/"
         hx-trigger="click"
         hx-target="body"
         hx-swap="outerHTML"
       >
-        Button clicked {counter} times
+        Clicked {counter} times
       </button>
-    </div>,
+    </>,
   );
 });

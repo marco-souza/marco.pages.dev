@@ -24,7 +24,7 @@ and limitations under the License.
 ***************************************************************************** */
 /* eslint-disable */
 // noinspection JSUnusedGlobalSymbols
-declare let onmessage: never;
+declare var onmessage: never;
 /**
  * An abnormal event (called an exception) which occurs as a result of calling a method or accessing a property of a web API.
  *
@@ -345,7 +345,8 @@ declare const performance: Performance;
 declare const Cloudflare: Cloudflare;
 declare const origin: string;
 declare const navigator: Navigator;
-type TestController = {}
+interface TestController {
+}
 interface ExecutionContext {
     waitUntil(promise: Promise<any>): void;
     passThroughOnException(): void;
@@ -1280,7 +1281,7 @@ declare abstract class Body {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response)
  */
-declare let Response: {
+declare var Response: {
     prototype: Response;
     new (body?: BodyInit | null, init?: ResponseInit): Response;
     error(): Response;
@@ -1326,7 +1327,7 @@ type RequestInfo<CfHostMetadata = unknown, Cf = CfProperties<CfHostMetadata>> = 
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request)
  */
-declare let Request: {
+declare var Request: {
     prototype: Request;
     new <CfHostMetadata = unknown, Cf = CfProperties<CfHostMetadata>>(input: RequestInfo<CfProperties> | URL, init?: RequestInit<Cf>): Request<CfHostMetadata, Cf>;
 };
@@ -2004,7 +2005,8 @@ interface TraceItem {
 interface TraceItemAlarmEventInfo {
     readonly scheduledTime: Date;
 }
-type TraceItemCustomEventInfo = {}
+interface TraceItemCustomEventInfo {
+}
 interface TraceItemScheduledEventInfo {
     readonly scheduledTime: number;
     readonly cron: string;
@@ -2303,7 +2305,7 @@ type WebSocketEventMap = {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket)
  */
-declare let WebSocket: {
+declare var WebSocket: {
     prototype: WebSocket;
     new (url: string, protocols?: (string[] | string)): WebSocket;
     readonly READY_STATE_CONNECTING: number;
@@ -2516,8 +2518,10 @@ interface GPUBufferBindingLayout {
     hasDynamicOffset?: boolean;
     minBindingSize?: (number | bigint);
 }
-type GPUBindGroupLayout = {}
-type GPUBindGroup = {}
+interface GPUBindGroupLayout {
+}
+interface GPUBindGroup {
+}
 interface GPUBindGroupDescriptor {
     label?: string;
     layout: GPUBindGroupLayout;
@@ -2532,7 +2536,8 @@ interface GPUBufferBinding {
     offset?: (number | bigint);
     size?: (number | bigint);
 }
-type GPUSampler = {}
+interface GPUSampler {
+}
 interface GPUSamplerDescriptor {
     label?: string;
     addressModeU?: string;
@@ -2553,7 +2558,8 @@ interface GPUShaderModuleDescriptor {
     label?: string;
     code: string;
 }
-type GPUPipelineLayout = {}
+interface GPUPipelineLayout {
+}
 interface GPUPipelineLayoutDescriptor {
     label?: string;
     bindGroupLayouts: GPUBindGroupLayout[];
@@ -2595,7 +2601,8 @@ interface GPUComputePassDescriptor {
     label?: string;
     timestampWrites?: GPUComputePassTimestampWrites;
 }
-type GPUQuerySet = {}
+interface GPUQuerySet {
+}
 interface GPUQuerySetDescriptor {
     label?: string;
 }
@@ -2607,7 +2614,8 @@ interface GPUComputePassTimestampWrites {
 interface GPUCommandBufferDescriptor {
     label?: string;
 }
-type GPUCommandBuffer = {}
+interface GPUCommandBuffer {
+}
 interface GPUQueue {
     submit(commandBuffers: GPUCommandBuffer[]): void;
     writeBuffer(buffer: GPUBuffer, bufferOffset: number | bigint, data: ArrayBuffer | ArrayBufferView, dataOffset?: (number | bigint), size?: (number | bigint)): void;
@@ -2720,7 +2728,8 @@ interface GPUTexture {
     get format(): string;
     get usage(): number;
 }
-type GPUTextureView = {}
+interface GPUTextureView {
+}
 interface GPUTextureViewDescriptor {
     label: string;
     format: string;
@@ -2738,7 +2747,8 @@ declare abstract class GPUColorWrite {
     static readonly ALPHA: number;
     static readonly ALL: number;
 }
-type GPURenderPipeline = {}
+interface GPURenderPipeline {
+}
 interface GPURenderPipelineDescriptor {
     label?: string;
     layout: string | GPUPipelineLayout;
@@ -4695,7 +4705,8 @@ declare abstract class D1PreparedStatement {
 // but this will ensure type checking on older versions still passes.
 // TypeScript's interface merging will ensure our empty interface is effectively
 // ignored when `Disposable` is included in the standard lib.
-type Disposable = {}
+interface Disposable {
+}
 /**
  * An email message that can be sent from a Worker.
  */
@@ -5074,7 +5085,7 @@ declare namespace Rpc {
     //   serializable check as well. Otherwise, only types defined with the "type" keyword would pass.
     type Serializable<T> = 
     // Structured cloneables
-    undefined | undefined | null | boolean | number | bigint | string | TypedArray | ArrayBuffer | DataView | Date | Error | RegExp
+    void | undefined | null | boolean | number | bigint | string | TypedArray | ArrayBuffer | DataView | Date | Error | RegExp
     // Structured cloneable composites
      | Map<T extends Map<infer U, unknown> ? Serializable<U> : never, T extends Map<unknown, infer U> ? Serializable<U> : never> | Set<T extends Set<infer U> ? Serializable<U> : never> | ReadonlyArray<T extends ReadonlyArray<infer U> ? Serializable<U> : never> | {
         [K in keyof T]: K extends number | string ? Serializable<T[K]> : never;
@@ -5139,7 +5150,8 @@ declare namespace Rpc {
     };
 }
 declare namespace Cloudflare {
-    type Env = {}
+    interface Env {
+    }
 }
 declare module "cloudflare:workers" {
     export type RpcStub<T extends Rpc.Stubable> = Rpc.Stub<T>;
