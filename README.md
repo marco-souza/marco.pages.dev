@@ -74,3 +74,8 @@ This project is licensed under the MIT License.
 
 This project was initially based on the Honox Cloudflare Template, which provides a robust foundation for deploying applications using modern tools like Vite, Tailwind CSS, and Wrangler.
 
+**Links**
+
+- https://github.com/honojs/honox
+- https://github.com/marco-souza/honox-cloudflare-template
+
