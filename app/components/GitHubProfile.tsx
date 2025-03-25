@@ -64,7 +64,7 @@ export function parseBioText(text: string | undefined): string {
     const link = linksMap.get(name);
 
     if (link) {
-      return `<a class="text-pink-900 hover:text-pink-400 underline" target="blank" href="${link}">${originalText}</a>`;
+      return `<a class="text-pink-900 dark:text-pink-200 hover:text-pink-400 underline" target="blank" href="${link}">${originalText}</a>`;
     }
     return originalText;
   });
