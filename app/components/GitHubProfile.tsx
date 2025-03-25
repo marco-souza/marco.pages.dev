@@ -19,7 +19,7 @@ export const GitHubProfileCard: FC<Props> = ({ profile }) => (
     </div>
 
     <p
-      class="opacity-70 font-extralight text-md px-8"
+      class="opacity-70 font-extralight text-md px-8 md:px-16"
       // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
       dangerouslySetInnerHTML={{ __html: parseBioText(profile.bio) }}
     />
@@ -64,7 +64,7 @@ export function parseBioText(text: string | undefined): string {
     const link = linksMap.get(name);
 
     if (link) {
-      return `<a class="text-pink-400" target="blank" href="${link}">${originalText}</a>`;
+      return `<a class="text-pink-900 hover:text-pink-400 underline" target="blank" href="${link}">${originalText}</a>`;
     }
     return originalText;
   });
