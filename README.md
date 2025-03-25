@@ -2,17 +2,18 @@
 
 Welcome to the repository for my ~overengineered~ overengineered personal site, hosted on Cloudflare Pages. This project is built using a modern development stack to ensure a seamless and efficient development and deployment experience.
 
-## Features
+## Features 🚀
 
-- **Modern Development Stack**: Built with Vite for fast builds and hot module replacement, Tailwind CSS for utility-first styling, and Wrangler for managing Cloudflare Workers.
-- **Seamless Deployment**: Deploy the site to Cloudflare Pages effortlessly with a single command.
-- **TypeScript Support**: Full support for TypeScript, providing type safety and enhancing the developer experience.
-- **Environment Management**: Securely manage environment variables and secrets using Wrangler.
-- **Automated Testing**: Includes a test suite powered by Vitest to maintain code quality.
-- **Code Quality Tools**: Integrated with Biome for code formatting and linting to keep the codebase clean.
-- **End-to-End Testing**: Utilizes Playwright for comprehensive end-to-end testing.
-- **Preview and Debugging**: Preview the site locally and debug using Wrangler's preview feature.
-- **Extensible**: Easily extendable with additional plugins and configurations to meet various project needs.
+- **Modern Development Stack**: Built with [Vite](https://vitejs.dev/) ⚡ for fast builds and hot module replacement, [Tailwind CSS](https://tailwindcss.com/) 🎨 for utility-first styling, and [Wrangler](https://developers.cloudflare.com/workers/wrangler/) 🛠️ for managing Cloudflare Workers.
+- **Seamless Deployment**: Deploy the site to [Cloudflare Pages](https://pages.cloudflare.com/) effortlessly with a single command. 🌐
+- **TypeScript Support**: Full support for [TypeScript](https://www.typescriptlang.org/) 🦾, providing type safety and enhancing the developer experience.
+- **Environment Management**: Securely manage environment variables and secrets using Wrangler 🔐.
+- **Automated Testing**: Includes a test suite powered by [Vitest](https://vitest.dev/) 🧪 to maintain code quality.
+- **Code Quality Tools**: Integrated with [Biome](https://biome.dev/) 🧹 for code formatting and linting to keep the codebase clean.
+- **End-to-End Testing**: Utilizes [Playwright](https://playwright.dev/) 🎭 for comprehensive end-to-end testing.
+- **Preview and Debugging**: Preview the site locally and debug using Wrangler's preview feature 🔍.
+- **Extensible**: Easily extendable with additional plugins and configurations to meet various project needs. 🔧
+- **Unconventional Setup**: We're using JSX + [htmx](https://htmx.org/) 💡, an unconventional yet powerful combination for building dynamic UIs.
 
 ## Installation
 
