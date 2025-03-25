@@ -1,8 +1,15 @@
 export const time = {
+  MILISECONDS: 1,
   SECOND: 1000,
   MINUTE: 60 * 1000,
   HOUR: 60 * 60 * 1000,
   DAY: 24 * 60 * 60 * 1000,
+  to: {
+    seconds: (n: number) => n * time.SECOND,
+    minutes: (n: number) => n * time.MINUTE,
+    hours: (n: number) => n * time.HOUR,
+    days: (n: number) => n * time.DAY,
+  },
 } as const;
 
 function contactEmail(email = "marco@tremtec.com") {
