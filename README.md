@@ -1,26 +1,26 @@
-# Honox Cloudflare Template
+# Marco's ~overengineered~ Personal Site
 
-This project is a template for deploying applications using Honox on Cloudflare Pages. It leverages modern tools like Vite, Tailwind CSS, and Wrangler for a seamless development and deployment experience.
+Welcome to the repository for my ~overengineered~ overengineered personal site, hosted on Cloudflare Pages. This project is built using a modern development stack to ensure a seamless and efficient development and deployment experience.
 
 ## Features
 
-- **Modern Development Stack**: Utilizes Vite for fast builds and hot module replacement, Tailwind CSS for utility-first styling, and Wrangler for managing Cloudflare Workers.
-- **Seamless Deployment**: Easily deploy applications to Cloudflare Pages with a single command.
-- **TypeScript Support**: Full support for TypeScript, enabling type safety and better developer experience.
-- **Environment Management**: Manage environment variables and secrets securely using Wrangler.
-- **Automated Testing**: Includes a test suite powered by Vitest for ensuring code quality.
-- **Code Quality Tools**: Integrated with Biome for code formatting and linting to maintain a clean codebase.
-- **End-to-End Testing**: Includes Playwright for comprehensive end-to-end testing.
-- **Preview and Debugging**: Preview applications locally and debug with Wrangler's preview feature.
-- **Extensible**: Easily extendable with additional plugins and configurations to suit various project needs.
+- **Modern Development Stack**: Built with Vite for fast builds and hot module replacement, Tailwind CSS for utility-first styling, and Wrangler for managing Cloudflare Workers.
+- **Seamless Deployment**: Deploy the site to Cloudflare Pages effortlessly with a single command.
+- **TypeScript Support**: Full support for TypeScript, providing type safety and enhancing the developer experience.
+- **Environment Management**: Securely manage environment variables and secrets using Wrangler.
+- **Automated Testing**: Includes a test suite powered by Vitest to maintain code quality.
+- **Code Quality Tools**: Integrated with Biome for code formatting and linting to keep the codebase clean.
+- **End-to-End Testing**: Utilizes Playwright for comprehensive end-to-end testing.
+- **Preview and Debugging**: Preview the site locally and debug using Wrangler's preview feature.
+- **Extensible**: Easily extendable with additional plugins and configurations to meet various project needs.
 
 ## Installation
 
 To get started with this project, clone the repository and install the dependencies:
 
 ```bash
-git clone https://github.com/marco-souza/honox-cloudflare-template.git
-cd honox-cloudflare-template
+git clone https://github.com/marco-souza/marco.pages.dev.git
+cd marco.pages.dev
 bun install
 ```
 
@@ -38,7 +38,7 @@ This will start a local development server with hot-reloading enabled.
 
 ### Deployment
 
-To deploy the application to Cloudflare Pages, use:
+To deploy the site to Cloudflare Pages, use:
 
 ```bash
 bun run deploy
@@ -48,7 +48,7 @@ bun run deploy
 
 - `dev`: Starts the Vite development server.
 - `tests`: Runs the test suite using Vitest.
-- `build`: Builds the application for production.
+- `build`: Builds the site for production.
 - `e2e`: Runs end-to-end tests using Playwright.
 - `fmt`: Formats the code using Biome.
 - `lint`: Lints the codebase and fixes issues.
@@ -56,8 +56,8 @@ bun run deploy
 - `w`: Alias for Wrangler commands.
 - `w:secret`: Manages secrets for Cloudflare Pages.
 - `w:typegen`: Generates types for Wrangler.
-- `preview`: Previews the application using Wrangler.
-- `deploy`: Builds and deploys the application.
+- `preview`: Previews the site using Wrangler.
+- `deploy`: Builds and deploys the site.
 
 ## Contributing
 
@@ -66,3 +66,10 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 ## License
 
 This project is licensed under the MIT License.
+
+---
+
+### Reference
+
+This project was initially based on the Honox Cloudflare Template, which provides a robust foundation for deploying applications using modern tools like Vite, Tailwind CSS, and Wrangler.
+
