@@ -28,7 +28,7 @@ export const configs = {
     pageURL: "https://marco-pages-dev.pages.dev",
     images: {
       icon: "/favicon.ico",
-      og: "/images/og.png",
+      og: "/images/og-512.png",
       logo: "/images/logo.png",
     },
   },
