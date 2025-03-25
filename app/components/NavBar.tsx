@@ -31,13 +31,14 @@ export const NavBar = ({ theme, isAuthenticated }: NavBarProps) => (
 );
 
 const Menu = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
+  const { navigation } = configs;
   const menuLinks = defineMenuLinks(
-    { href: "/", name: "Home" },
-    { href: "/about", name: "About" },
+    { href: navigation.home, name: "Home" },
+    { href: navigation.about, name: "About" },
     // public
-    { href: "/login", name: "Sign in", hide: isAuthenticated },
+    { href: navigation.login, name: "Sign in", hide: isAuthenticated },
     // private
-    { href: "/api/auth/logout", name: "Sign out", hide: !isAuthenticated },
+    { href: navigation.logout, name: "Sign out", hide: !isAuthenticated },
   );
 
   return (

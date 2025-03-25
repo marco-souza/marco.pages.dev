@@ -18,7 +18,7 @@ function contactEmail(email = "marco@tremtec.com") {
 }
 
 export const configs = {
-  repo: "https://github.com/marco-souza/honox-cloudflare-template",
+  repo: "https://github.com/marco-souza/marco.pages.dev",
   username: "marco-souza",
   contact_me: contactEmail(),
 
@@ -42,10 +42,9 @@ export const configs = {
   },
 
   navigation: {
-    dashboard: "/dashboard",
-    settings: "/user/settings",
-    onboarding: "/user/onboarding",
-    music: "/music",
-    downloadMusic: "/music/download",
+    home: "/",
+    about: "/about",
+    login: "/login",
+    logout: "/api/auth/logout",
   },
 };
