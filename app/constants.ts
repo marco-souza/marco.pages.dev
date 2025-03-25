@@ -5,10 +5,10 @@ export const time = {
   HOUR: 60 * 60 * 1000,
   DAY: 24 * 60 * 60 * 1000,
   to: {
-    seconds: (n: number) => n * time.SECOND,
-    minutes: (n: number) => n * time.MINUTE,
-    hours: (n: number) => n * time.HOUR,
-    days: (n: number) => n * time.DAY,
+    seconds: (n: number) => n / time.SECOND,
+    minutes: (n: number) => n / time.MINUTE,
+    hours: (n: number) => n / time.HOUR,
+    days: (n: number) => n / time.DAY,
   },
 } as const;
 

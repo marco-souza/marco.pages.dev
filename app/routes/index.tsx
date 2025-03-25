@@ -9,6 +9,7 @@ const app = new Hono<{ Bindings: Cloudflare.Env }>();
 app.post("/", async (c) => {
   const counter = getCookie(c, "counter")?.toString() ?? "";
   const counterNum = Number.parseFloat(counter) || 0;
+
   setCookie(c, "counter", String(counterNum + 1));
 
   return c.redirect("/");
@@ -16,7 +17,6 @@ app.post("/", async (c) => {
 
 app.get("/", async (c) => {
   const counter = getCookie(c, "counter")?.toString() ?? "0";
-  // TODO: cache profile
   const profile = await cache(
     c.env.CACHE,
     github.fetchProfile(),
