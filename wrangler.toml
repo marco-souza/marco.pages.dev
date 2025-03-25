@@ -1,7 +1,11 @@
 name = "marco-pages-dev"
-
 pages_build_output_dir = "./dist"
-
 compatibility_flags = ["nodejs_compat"]
-
 compatibility_date = "2025-03-24"
+
+[observability]
+enabled = true
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "ea30a4df573e4533ba5dfece22c6a7c9"
