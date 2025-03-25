@@ -1,5 +1,5 @@
 import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
-import { Link, Script } from "honox/server";
+import { Link } from "honox/server";
 import { Layout } from "@/components/Layout";
 import { getThemeCookie } from "@/shared/theme";
 import { AUTH_KEYS } from "@/shared/auth";
@@ -23,7 +23,7 @@ export default jsxRenderer(({ children }) => {
         {title ? <title>{title}</title> : <></>}
 
         <Link href="/app/styles.css" rel="stylesheet" />
-        <Script src="/static/js/htmx.min.js" />
+        <script src="/static/js/htmx.min.js" />
 
         <Link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </head>
