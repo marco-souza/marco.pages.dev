@@ -89,7 +89,7 @@ export function markdownToHTML(md: string) {
     // parser links
     line = line.replace(
       /\[(.*?)\]\((.*?)\)/g,
-      `<a${applyClass("link")} href="$2" class="link">$1</a>`,
+      `<a${applyClass("link")} target="_blank" href="$2" class="link">$1</a>`,
     );
 
     // parse bold, italic, and strikethrough
