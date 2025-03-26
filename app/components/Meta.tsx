@@ -27,6 +27,9 @@ export function Meta() {
       <meta property="og:description" content={description} />
       <meta property="og:logo" content={images.logo} />
       <meta property="og:image" itemProp="image" content={images.og} />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:width" content="300" />
+      <meta property="og:image:hegiht" content="300" />
       <meta
         property="og:image:secure_url"
         itemProp="image"
