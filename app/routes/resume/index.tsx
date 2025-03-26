@@ -23,7 +23,7 @@ app.get("/content", async (c) => {
     "github-resume",
   );
 
-  const [_metadata, html] = parseMarkdown(content);
+  const { html } = parseMarkdown(content);
 
   return c.render(
     <div class="markdown-body card shadow-md full-printer-page w-full line-height-0">

@@ -1,23 +1,25 @@
 type ClassMap = Record<string, string>;
 
-const classMap: ClassMap = {
+export const classMap: ClassMap = {
   "heading[depth=1]": "text-4xl font-bold py-4 pt-8",
   "heading[depth=2]": "text-2xl font-bold py-2 pt-6",
-  "heading[depth=3]": "text-xl font-bold py-2 pt-4",
-  blockquote: "border-l-4 border-gray-300 pl-4 py-2",
-  paragraph: "py-1",
+  "heading[depth=3]": "text-xl font-bold py-2 pt-6",
+  blockquote: "border-l-4 border-gray-300 pl-4 py-4",
+  paragraph: "py-2",
   link: "text-pink-400",
   list: "list-disc pl-4 py-1",
 };
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export function parseMarkdown(content: string): [Record<string, any>, string] {
+type ParsedMarkdown = { parsed: Record<string, any>; html: string };
+
+export function parseMarkdown(content: string): ParsedMarkdown {
   if (!content.startsWith("---")) {
-    return [{}, markdownToHTMLWithoutDeps(content)];
+    return { parsed: {}, html: markdownToHTML(content) };
   }
 
   const [metadata, md] = content.split("---").slice(1);
-  return [parseYaml(metadata), markdownToHTMLWithoutDeps(md)];
+  return { parsed: parseYaml(metadata), html: markdownToHTML(md) };
 }
 
 function parseYaml(metadata: string) {
@@ -51,76 +53,113 @@ function parseYaml(metadata: string) {
 
   return result;
 }
+export function markdownToHTML(md: string) {
+  let content = "";
 
-function markdownToHTMLWithoutDeps(md: string, opts: ClassMap = {}) {
-  const theme = { ...classMap, ...opts };
+  const blocks = md.split("\n\n");
+  for (const block of blocks) {
+    let line = block;
 
-  function applyClass(nodeType: string, depth?: number) {
-    let className = theme[nodeType];
-    if (!className && depth !== undefined) {
-      className = theme[`${nodeType}[depth=${depth}]`];
+    // handle line blocks
+    switch (block.at(0)) {
+      case "#":
+        line = parseHeading(block);
+        break;
+      case ">":
+        line = parseBlockquote(block);
+        break;
+      case "*":
+      case "-":
+        line = parseList(block);
+        break;
+      default: {
+        const isHtmlWithSpacesRegex = /<.*?>\s*$/;
+        if (isHtmlWithSpacesRegex.test(block)) {
+          line = block;
+          break;
+        }
+
+        line = `<p${applyClass("paragraph")}>${block}</p>`;
+      }
     }
-    return className ? ` class="${className}"` : "";
-  }
 
-  function convertMarkdownToHTML(raw: string): string {
-    // handle headers
-    let content = raw
-      .replace(
-        /^# (.*$)/gim,
-        (_, p1) => `<h1${applyClass("heading", 1)}>${p1}</h1>`,
-      )
-      .replace(
-        /^## (.*$)/gim,
-        (_, p1) => `<h2${applyClass("heading", 2)}>${p1}</h2>`,
-      )
-      .replace(
-        /^### (.*$)/gim,
-        (_, p1) => `<h3${applyClass("heading", 3)}>${p1}</h3>`,
-      );
+    // parse images
+    line = line.replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1" />');
 
-    // handle lists
-    content = content
-      .replace(
-        /^[*-] (.*$)/gim,
-        (_, p1) => `<li${applyClass("list")}>${p1}</li>`,
-      )
-      .replace(
-        /^ {2}[*-] (.*$)/gim,
-        (_, p1) => `<li${applyClass("list")}>${p1}</li>`,
-      )
-      .replace(
-        /^ {4}[*-] (.*$)/gim,
-        (_, p1) => `<li${applyClass("list")}>${p1}</li>`,
-      );
-
-    // handle bold & italic
-    content = content
-      .replace(/\*\*(.*?)\*\*/g, (_, p1) => `<strong>${p1}</strong>`)
-      .replace(/__(.*?)__/g, (_, p1) => `<strong>${p1}</strong>`)
-      .replace(/\*(.*?)\*/g, (_, p1) => `<em>${p1}</em>`)
-      .replace(/_(.*?)_/g, (_, p1) => `<em>${p1}</em>`);
-
-    // handle images
-    content = content.replace(
-      /!\[(.*?)\]\((.*?)\)/g,
-      (_, p1, p2) => `<img src="${p2}" alt="${p1}" />`,
-    );
-
-    // handle links
-    content = content.replace(
+    // parser links
+    line = line.replace(
       /\[(.*?)\]\((.*?)\)/g,
-      (_, p1, p2) => `<a${applyClass("link")} href="${p2}">${p1}</a>`,
+      `<a${applyClass("link")} href="$2" class="link">$1</a>`,
     );
 
-    // handle blockquotes
-    content = content.replace(
-      /^(> (.*$)\n?)+/gim,
-      (_, p1) => `<blockquote${applyClass("blockquote")}>${p1}</blockquote>`,
-    );
+    // parse bold, italic, and strikethrough
+    line = line
+      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+      .replace(/__(.*?)__/g, "<strong>$1</strong>")
+      .replace(/\*(.*?)\*/g, "<em>$1</em>")
+      .replace(/_(.*?)_/g, "<em>$1</em>")
+      .replace(/~~(.*?)~~/g, "<del>$1</del>");
 
-    return content;
+    content += line;
   }
 
-  return convertMarkdownToHTML(md);
+  return content;
 }
+
+const applyClass = (name: string, depth?: number) => {
+  const classes = classMap[name];
+  if (classes) {
+    return ` class="${classes}"`;
+  }
+
+  const heading = classMap[`heading[depth=${depth}]`];
+  if (heading) {
+    return ` class="${heading}"`;
+  }
+
+  return "";
+};
+
+export const parseHeading = (line: string) => {
+  const [hashes = ""] = line.split(" ");
+  const depth = hashes.length;
+
+  return `<h${depth}${applyClass("heading", depth)}>${line.replace(/#/g, "").trim()}</h${depth}>`;
+};
+
+export const parseBlockquote = (line: string) => {
+  const lines = line.split("\n");
+
+  const content = lines
+    .map((l) => l.replace("> ", "").replace("\n", "").trim())
+    .join(" ");
+
+  return `<blockquote${applyClass("blockquote")}>${content}</blockquote>`;
+};
+
+export const parseList = (line: string) => {
+  const lines = line.split("\n");
+  const stack: string[] = [];
+  let currentIndentLevel = 0;
+
+  for (const l of lines) {
+    const indentLevel = l.search(/\S|$/);
+    const content = l.replace(/- /, "").trim();
+
+    if (indentLevel > currentIndentLevel) {
+      stack.push(`<ul${applyClass("list")}>`);
+    } else if (indentLevel < currentIndentLevel) {
+      stack.push("</ul>");
+    }
+
+    stack.push(`<li>${content}</li>`);
+    currentIndentLevel = indentLevel;
+  }
+
+  while (currentIndentLevel > 0) {
+    stack.push("</ul>");
+    currentIndentLevel--;
+  }
+
+  return `<ul${applyClass("list")}>${stack.join("")}</ul>`;
+};
