@@ -12,6 +12,10 @@ export const time = {
   },
 } as const;
 
+export const timeouts = {
+  cache: 5 * time.MINUTE,
+};
+
 function contactEmail(email = "marco@tremtec.com") {
   const mailUrl = new URL(`mailto:${email}`);
 

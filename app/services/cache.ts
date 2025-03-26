@@ -1,10 +1,10 @@
-import { time } from "../constants";
+import { time, timeouts } from "../constants";
 
 export async function cache<T>(
   kv: KVNamespace,
   value: Promise<T>,
   key: string,
-  expireInMinutes = 1,
+  expireInMinutes = timeouts.cache,
 ) {
   const cachedValue = await kv.get(key);
   if (cachedValue) {
@@ -16,7 +16,7 @@ export async function cache<T>(
 
   const resolvedValue = await value;
   await kv.put(key, JSON.stringify(resolvedValue), {
-    expirationTtl: time.to.seconds(time.MINUTE * expireInMinutes),
+    expirationTtl: time.to.seconds(expireInMinutes),
   });
 
   console.log("Cached", key, "for", expireInMinutes, "minutes");
