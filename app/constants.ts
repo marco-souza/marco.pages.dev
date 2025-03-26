@@ -61,7 +61,7 @@ export const configs = {
 
   navigation: {
     home: "/",
-    about: "/about",
+    resume: "/resume",
     login: "/login",
     logout: "/api/auth/logout",
   },
