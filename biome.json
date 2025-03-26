@@ -8,10 +8,10 @@
   "files": {
     "ignoreUnknown": false,
     "ignore": [
-      "node_modules",
+      "dist",
       "public",
+      "node_modules",
       "./bun.lock",
-      "./dist",
       "./worker-configuration.d.ts",
       "./package.json"
     ]

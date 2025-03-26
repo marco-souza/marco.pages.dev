@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { configs } from "@/constants";
-// import { markdownToHTML } from "@/services/markdown";
 
 const GitHubProfileSchema = z.object({
   bio: z.string(),
@@ -50,11 +49,7 @@ class GitHub {
   async fetchResume() {
     // fetch
     const resp = await fetch(configs.github.resume, { headers });
-    const body = await resp.text();
-
-    // TODO: parse
-    // return markdownToHTML(body);
-    return body;
+    return await resp.text();
   }
 }
 
