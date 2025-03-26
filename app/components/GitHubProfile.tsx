@@ -9,7 +9,7 @@ type Props = {
 
 export const GitHubProfileCard: FC<Props> = ({ profile, sidebar = false }) => (
   <>
-    <div class="gap-2 flex flex-col">
+    <div class={`gap-2 flex flex-col ${sidebar && "sm:mt-8"}`}>
       <img
         alt="It's Me"
         src={profile.avatar_url}
@@ -20,7 +20,7 @@ export const GitHubProfileCard: FC<Props> = ({ profile, sidebar = false }) => (
     </div>
 
     <p
-      class={`opacity-70 font-extralight text-md px-8 ${!sidebar && "md:px-16"}`}
+      class={`opacity-70 font-extralight text-md px-8 ${!sidebar && "sm:px-16"}`}
       // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
       dangerouslySetInnerHTML={{ __html: parseBioText(profile.bio) }}
     />
