@@ -41,8 +41,8 @@ type Props = {
 
 const ProfileSideBar = ({ profile }: Props) => (
   <div class="mx-auto w-full skip-printer">
-    <div class="flex flex-col gap-10 my-8 xl:my-16 2xl:my-32 items-center text-center sticky top-0">
-      <GitHubProfileCard profile={profile} />
+    <div class="flex flex-col gap-10 my-8 xl:my-8 2xl:my-16 items-center text-center sticky top-0">
+      <GitHubProfileCard profile={profile} sidebar />
 
       <div class="actions grid 2xl:grid-cols-2 gap-8 w-full">
         <a
@@ -54,9 +54,8 @@ const ProfileSideBar = ({ profile }: Props) => (
 
         <button
           type="button"
-          href={configs.contact_me}
           class="btn btn-outline hover:animate-pulse"
-          onClick={() => globalThis.print()}
+          onclick="window.print()"
         >
           Print Resume 🖨️
         </button>
