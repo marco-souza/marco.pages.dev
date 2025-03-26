@@ -2,9 +2,9 @@ type ClassMap = Record<string, string>;
 
 export const classMap: ClassMap = {
   "heading[depth=1]": "text-4xl font-bold py-4 pt-8",
-  "heading[depth=2]": "text-2xl font-bold py-2 pt-6",
+  "heading[depth=2]": "text-2xl font-bold py-2 pt-8",
   "heading[depth=3]": "text-xl font-bold py-2 pt-6",
-  blockquote: "border-l-4 border-gray-300 pl-4 py-4",
+  blockquote: "border-l-4 border-gray-300 pl-4 py-2 italic",
   paragraph: "py-2",
   link: "text-pink-400",
   list: "list-disc pl-4 py-1",
