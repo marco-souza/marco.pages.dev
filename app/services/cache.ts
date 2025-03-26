@@ -14,12 +14,11 @@ export async function cache<T>(
 
   console.log("Cache miss for", key);
 
+  const expirationTtl = time.to.seconds(expireInMinutes);
   const resolvedValue = await value;
-  await kv.put(key, JSON.stringify(resolvedValue), {
-    expirationTtl: time.to.seconds(expireInMinutes),
-  });
+  await kv.put(key, JSON.stringify(resolvedValue), { expirationTtl });
 
-  console.log("Cached", key, "for", expireInMinutes, "minutes");
+  console.log("Cached", key, "for", expirationTtl, "seconds");
 
   return resolvedValue;
 }
