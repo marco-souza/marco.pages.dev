@@ -35,7 +35,7 @@ export const configs = {
     pageURL: "https://marco-pages-dev.pages.dev",
     images: {
       icon: "/favicon.ico",
-      og: "/images/marco.og.png",
+      og: "/images/marco.og.256.png",
       logo: "/images/marco.logo.png",
     },
   },
