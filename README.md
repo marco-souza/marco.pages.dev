@@ -1,6 +1,6 @@
 # Marco's ~overengineered~ Personal Site
 
-Welcome to the repository for my ~overengineered~ overengineered personal site, hosted on Cloudflare Pages. This project is built using a modern development stack to ensure a seamless and efficient development and deployment experience.
+Welcome to the repository for my ~overengineered~ personal site, hosted on Cloudflare Pages. This project is built using a modern development stack to ensure a seamless and efficient development and deployment experience.
 
 ## Features 🚀
 
