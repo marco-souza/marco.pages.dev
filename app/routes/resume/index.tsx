@@ -26,7 +26,7 @@ app.get("/content", async (c) => {
   const { html } = parseMarkdown(content);
 
   return c.render(
-    <div class="markdown-body card shadow-md full-printer-page w-full line-height-0">
+    <div class="markdown-body card shadow-md print-no-shadow full-printer-page w-full line-height-0">
       {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
       <div class="card-body gap-0" dangerouslySetInnerHTML={{ __html: html }} />
     </div>,
