@@ -3,6 +3,7 @@ import { configs } from "@/constants";
 import { type GitHubProfile, github } from "@/services/github";
 import { Hono } from "hono";
 import { cache } from "#/app/services/cache";
+import { parseMarkdown } from "#/app/services/markdown";
 
 const app = new Hono<{ Bindings: Cloudflare.Env }>();
 
@@ -22,12 +23,12 @@ app.get("/content", async (c) => {
     "github-resume",
   );
 
-  // TODO: parse markdown
+  const [_metadata, html] = parseMarkdown(content);
 
   return c.render(
-    <div class="markdown-body card shadow-md full-printer-page w-full">
+    <div class="markdown-body card shadow-md full-printer-page w-full line-height-0">
       {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
-      <div class="card-body" dangerouslySetInnerHTML={{ __html: content }} />
+      <div class="card-body gap-0" dangerouslySetInnerHTML={{ __html: html }} />
     </div>,
   );
 });
@@ -70,7 +71,11 @@ function ResumePage({ profile }: Props) {
       <ProfileSideBar profile={profile} />
 
       <div class="gap-8 grid w-full md:col-span-2">
-        <div hx-get="content" hx-trigger="load" hx-swap="outerHTML">
+        <div
+          hx-get="/resume/content?partial=true"
+          hx-trigger="load"
+          hx-swap="outerHTML"
+        >
           <img
             alt="Result loading..."
             class="mx-auto"

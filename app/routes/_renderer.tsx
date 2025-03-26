@@ -14,6 +14,12 @@ export default jsxRenderer(({ children }) => {
     getCookie(ctx, AUTH_KEYS.authToken) ||
       getCookie(ctx, AUTH_KEYS.refreshToken),
   );
+
+  const isPartial = ctx.req.query("partial") === "true";
+  if (isPartial) {
+    return children;
+  }
+
   return (
     <html lang="en">
       <head>
