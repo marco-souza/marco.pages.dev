@@ -35,12 +35,16 @@ export const GitHubProfileView: FC<Props> = ({ profile }) => {
 
         <div class="actions grid 2xl:grid-cols-2 gap-8 w-full md:grid-cols-2">
           <a
-            href={configs.contact_me}
+            href={configs.navigation.contact}
             class="btn btn-outline text-pink-400 hover:text-white hover:bg-pink-400 hover:animate-zoom-in"
           >
             Let's grab a Coffee ☕️
           </a>
-          <a href="/resume" class="btn btn-outline hover:animate-zoom-in">
+
+          <a
+            href={configs.navigation.resume}
+            class="btn btn-outline hover:animate-zoom-in"
+          >
             Check my Resume 💼
           </a>
         </div>

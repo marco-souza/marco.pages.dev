@@ -31,7 +31,6 @@ function contactEmail(email = "marco@tremtec.com") {
 export const configs = {
   repo: "https://github.com/marco-souza/marco.pages.dev",
   username: "marco-souza",
-  contact_me: contactEmail(),
 
   site: {
     title: "Welcome to Marco's lab!",
@@ -62,6 +61,7 @@ export const configs = {
   navigation: {
     home: "/",
     resume: "/resume",
+    contact: "/contact",
     login: "/login",
     logout: "/api/auth/logout",
   },

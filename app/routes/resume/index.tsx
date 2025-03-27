@@ -46,7 +46,7 @@ const ProfileSideBar = ({ profile }: Props) => (
 
       <div class="actions grid 2xl:grid-cols-2 gap-8 w-full">
         <a
-          href={configs.contact_me}
+          href={configs.navigation.contact}
           class="btn btn-outline btn-secondary hover:text-white hover:animate-pulse"
         >
           Let's grab a Coffee ☕️

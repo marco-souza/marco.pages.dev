@@ -16,9 +16,16 @@ interface ContactFormProps {
 export const ContactForm: FC<ContactFormProps> = ({ errors, values }) => {
   return (
     <div class="max-w-md mx-auto mt-10 p-6 rounded-lg shadow-md">
-      <h2 class="text-2xl font-bold text-center mb-4">Contact Us</h2>
+      <h1 class="text-3xl font-bold text-center mb-4">
+        Let's grab a Coffee ☕️
+      </h1>
+
+      <p class="text-center text-gray-500">
+        Have a question or want to work together? Send me a message!
+      </p>
+
       <form method="post">
-        <div class="mb-4">
+        <div class="my-8">
           <label htmlFor="name" class="block text-sm font-medium">
             Name
           </label>
@@ -83,7 +90,7 @@ interface SuccessFormProps {
 
 export const ContactFormSuccess: FC<SuccessFormProps> = ({ message }) => {
   return (
-    <div class="max-w-md mx-auto mt-10 p-6 bg-green-100 rounded-lg shadow-md">
+    <div class="max-w-md mx-auto mt-10 p-6 bg-green-100 rounded-lg ">
       <h2 class="text-2xl font-bold text-center mb-4 text-green-800">
         Message sent! 🎉
       </h2>
