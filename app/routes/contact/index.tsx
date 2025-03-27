@@ -55,7 +55,7 @@ app.post(
     }
 
     // persist email
-    c.env.EMAIL.put(data.data.email, JSON.stringify(data.data));
+    await c.env.EMAIL.put(data.data.email, JSON.stringify(data.data));
 
     return c.redirect("/contact/success");
   },
