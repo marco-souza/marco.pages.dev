@@ -12,7 +12,10 @@ app.get("/", async (c) => {
 
 const ContactDataValidator = z.object({
   name: z.string().nonempty("Name is required"),
-  email: z.string().email("Invalid email address"),
+  email: z
+    .string()
+    .email("Invalid email address")
+    .transform((email) => email.split("+")[0]),
   message: z.string().nonempty("Message is required"),
 });
 
@@ -51,8 +54,8 @@ app.post(
       return c.render(<ContactForm values={body} errors={errors} />);
     }
 
-    // TODO: persist or send email
-    console.log(data.data);
+    // persist email
+    c.env.EMAIL.put(data.data.email, JSON.stringify(data.data));
 
     return c.redirect("/contact/success");
   },
@@ -60,7 +63,7 @@ app.post(
 
 app.get("/success", async (c) => {
   return c.render(
-    <ContactFormSuccess message="Your contact information has been sent!" />,
+    <ContactFormSuccess message="I'll take a look and reach you back soon! ☕️" />,
   );
 });
 
