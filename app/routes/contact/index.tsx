@@ -11,12 +11,15 @@ app.get("/", async (c) => {
 });
 
 const ContactDataValidator = z.object({
-  name: z.string().nonempty("Name is required"),
+  name: z.string().nonempty("Name is required").min(3, "Name is too short"),
   email: z
     .string()
     .email("Invalid email address")
     .transform((email) => email.replace(/\+.*\@/g, "@")),
-  message: z.string().nonempty("Message is required"),
+  message: z
+    .string()
+    .nonempty("Message is required")
+    .min(10, "Message is too short (min 10 characters)"),
 });
 
 // receive user email, name and message
