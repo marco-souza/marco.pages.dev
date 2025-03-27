@@ -19,6 +19,7 @@
     "deploy": "bun run build && wrangler pages deploy"
   },
   "dependencies": {
+    "@hono/zod-validator": "^0.4.3",
     "hono": "^4.7.5",
     "honox": "^0.1.38",
     "htmx.org": "2.0.4"
