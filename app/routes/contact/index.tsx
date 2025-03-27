@@ -15,7 +15,7 @@ const ContactDataValidator = z.object({
   email: z
     .string()
     .email("Invalid email address")
-    .transform((email) => email.split("+")[0]),
+    .transform((email) => email.replace(/\+.*\@/g, "@")),
   message: z.string().nonempty("Message is required"),
 });
 
