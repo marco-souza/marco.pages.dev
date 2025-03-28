@@ -42,6 +42,17 @@ app.post("/", async (c) => {
     );
   }
 
+  // add the song if not included
+  if (addedSongsList.includes(data.data.youtubeUrl)) {
+    return c.render(
+      <MusicForm
+        values={body}
+        errors={{ youtubeUrl: "This song is already in the queue" }}
+        addedSongsList={addedSongsList}
+      />,
+    );
+  }
+
   // Add YouTube URL to download queue
   const trackToDownload: TrackDownloadDTO = {
     youtubeUrl: data.data.youtubeUrl,
@@ -55,9 +66,7 @@ app.post("/", async (c) => {
   );
 
   // add the song if not included
-  if (!addedSongsList.includes(data.data.youtubeUrl)) {
-    addedSongsList.push(data.data.youtubeUrl);
-  }
+  addedSongsList.push(data.data.youtubeUrl);
 
   // persist on the cookie
   setCookie(c, "addedSongs", JSON.stringify(addedSongsList), {
