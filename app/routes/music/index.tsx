@@ -48,13 +48,18 @@ app.post("/", async (c) => {
     status: "pending",
   };
 
+  // add the song to the download queue
   await c.env.PLAYLIST.put(
     data.data.youtubeUrl,
     JSON.stringify(trackToDownload),
   );
 
-  // Add the song to the list of added songs and persist it to the cookie
-  addedSongsList.push(data.data.youtubeUrl);
+  // add the song if not included
+  if (!addedSongsList.includes(data.data.youtubeUrl)) {
+    addedSongsList.push(data.data.youtubeUrl);
+  }
+
+  // persist on the cookie
   setCookie(c, "addedSongs", JSON.stringify(addedSongsList), {
     httpOnly: true,
     maxAge: 400 * time.to.seconds(time.DAY), // max 400 days
@@ -68,7 +73,7 @@ app.post("/", async (c) => {
 app.get("/", async (c) => {
   const values = {};
   const errors = {};
-  //
+
   // get a list of added songs from cookies
   const addedSongs = getCookie(c, "addedSongs");
   const addedSongsList: string[] = addedSongs ? JSON.parse(addedSongs) : [];
