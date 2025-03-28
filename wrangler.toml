@@ -3,6 +3,13 @@ pages_build_output_dir = "./dist"
 compatibility_flags = ["nodejs_compat"]
 compatibility_date = "2025-03-24"
 
+[triggers]
+# Schedule cron triggers:
+# - At every 3rd minute
+# - At 15:00 (UTC) on first day of the month
+# - At 23:59 (UTC) on the last weekday of the month
+crons = [ "*/3 * * * *", "* * * * *", "59 23 LW * *" ]
+
 [observability]
 enabled = true
 
