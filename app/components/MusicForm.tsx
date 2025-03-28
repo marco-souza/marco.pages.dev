@@ -1,4 +1,5 @@
 import type { FC } from "hono/jsx";
+import { configs } from "../constants";
 
 interface MusicFormProps {
   errors: {
@@ -20,14 +21,16 @@ export const MusicForm: FC<MusicFormProps> = ({
   });
 
   return (
-    <div class="max-w-lg mx-auto mt-10 p-6 rounded-lg shadow-md">
-      <h1 class="text-3xl font-bold text-center mb-4">
-        Add a Track to my DJ Playlist 🎶
-      </h1>
+    <div class="max-w-lg mx-auto mt-10 p-6 rounded-lg shadow-md grid gap-4">
+      <div>
+        <h1 class="text-3xl font-bold text-center">
+          Add a Track to my DJ Playlist 🎶
+        </h1>
 
-      <p class="text-center text-gray-500">
-        Found a great track on YouTube? Add it to Marco's playlist!
-      </p>
+        <p class="text-center text-gray-500">
+          Found a great track on YouTube? Add it to Marco's playlist!
+        </p>
+      </div>
 
       <form method="post">
         <div class="mb-4">
@@ -89,7 +92,7 @@ export const MusicFormSuccess: FC<SuccessFormProps> = ({ message }) => {
       </h2>
       <p class="text-center text-green-700">{message}</p>
       <div class="flex justify-center mt-4">
-        <a href="/music" class="btn btn-outline btn-success">
+        <a href={configs.navigation.music} class="btn btn-outline btn-success">
           Go to Playlist
         </a>
       </div>
