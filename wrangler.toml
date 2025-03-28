@@ -13,3 +13,7 @@ id = "7c22395df09a4c89b57aa2972fd9b46a"
 [[kv_namespaces]]
 binding = "EMAIL"
 id = "5892ae4d22754cefba7f832dacab6056"
+
+[[kv_namespaces]]
+binding = "PLAYLIST"
+id = "b1ce569744a0426ba7da271ff41cf0ca"

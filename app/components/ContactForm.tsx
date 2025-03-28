@@ -96,9 +96,13 @@ export const ContactFormSuccess: FC<SuccessFormProps> = ({ message }) => {
       </h2>
       <p class="text-center text-green-700">{message}</p>
       <div class="flex justify-center mt-4">
-        <a href="/" class="btn btn-outline btn-success">
-          Go Home
-        </a>
+        <button
+          type="button"
+          onclick="history.back()"
+          class="btn btn-outline btn-success"
+        >
+          Go Back
+        </button>
       </div>
     </div>
   );
