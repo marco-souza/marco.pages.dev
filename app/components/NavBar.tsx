@@ -35,6 +35,7 @@ const Menu = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
   const menuLinks = defineMenuLinks(
     { href: navigation.home, name: "Home" },
     { href: navigation.resume, name: "Resume" },
+    { href: navigation.music, name: "Playlist" },
     { href: navigation.contact, name: "Contact" },
     // public
     { href: navigation.login, name: "Sign in", hide: isAuthenticated },
