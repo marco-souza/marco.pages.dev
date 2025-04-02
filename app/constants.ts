@@ -19,7 +19,7 @@ export const timeouts = {
 function contactEmail(email = "marco@tremtec.com") {
   const mailUrl = new URL(`mailto:${email}`);
 
-  mailUrl.searchParams.set("subject", "Hey, Marco! Let's grab a coffee ☕️");
+  mailUrl.searchParams.set("subject", "Hey, Marco! Let's grab a coffee ☕");
   mailUrl.searchParams.set(
     "body",
     "Hey, Marco! I'm reaching out to you because...",
@@ -64,6 +64,25 @@ export const configs = {
     music: "/music",
     contact: "/contact",
     login: "/login",
-    logout: "/api/auth/logout",
+    admin: "/admin",
+
+    auth: {
+      signIn: "/admin/auth/signin",
+      signOut: "/admin/auth/signout",
+      callback: "/admin/auth/callback",
+      refresh: "/admin/auth/refresh",
+    },
+
+    private: {
+      dashboard: "/admin/dashboard",
+    },
+  },
+
+  auth: {
+    keys: {
+      authToken: "auth_token",
+      refreshToken: "refresh_token",
+    },
+    users: ["marco-souza"],
   },
 };

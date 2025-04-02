@@ -2,7 +2,6 @@ import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
 import { Link } from "honox/server";
 import { Layout } from "@/components/Layout";
 import { getThemeCookie } from "@/shared/theme";
-import { AUTH_KEYS } from "@/shared/auth";
 import { getCookie } from "hono/cookie";
 import { Meta } from "@/components/Meta";
 import { configs } from "../constants";
@@ -11,13 +10,13 @@ export default jsxRenderer(({ children }) => {
   const ctx = useRequestContext();
   const theme = getThemeCookie(ctx);
   const isAuthenticated = Boolean(
-    getCookie(ctx, AUTH_KEYS.authToken) ||
-      getCookie(ctx, AUTH_KEYS.refreshToken),
+    getCookie(ctx, configs.auth.keys.authToken) ||
+      getCookie(ctx, configs.auth.keys.refreshToken),
   );
 
   const isPartial = ctx.req.query("partial") === "true";
   if (isPartial) {
-    return children;
+    return <>{children}</>;
   }
 
   return (
