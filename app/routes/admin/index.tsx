@@ -41,6 +41,22 @@ app.get(relativeUrls.callback, async (c) => {
   const token = await auth.fetchAccessToken(code);
   console.log("User logged", { token });
 
+  const user = await auth.fetchAuthenticatedUser(token.access_token);
+  console.log("User profile", { user });
+
+  const isUserAuthorized = !configs.auth.users.includes(user.login);
+  if (isUserAuthorized) {
+    const url = new URL(c.req.url);
+    const redirectUrl = new URL("/admin", url.origin);
+
+    redirectUrl.searchParams.set(
+      "errors",
+      `User '${user.login}' is not authorized`,
+    );
+
+    return c.redirect(redirectUrl.toString());
+  }
+
   setAuthCookies(c, token);
 
   return c.redirect(configs.navigation.private.dashboard);
