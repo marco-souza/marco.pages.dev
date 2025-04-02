@@ -40,7 +40,7 @@ const Menu = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
     // public
     { href: navigation.login, name: "Sign in", hide: isAuthenticated },
     // private
-    { href: navigation.logout, name: "Sign out", hide: !isAuthenticated },
+    { href: navigation.auth.signOut, name: "Sign out", hide: !isAuthenticated },
   );
 
   return (
