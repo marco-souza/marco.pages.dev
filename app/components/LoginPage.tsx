@@ -32,7 +32,7 @@ export function LoginPage({ errors = "" }) {
           </button>
 
           {errors && (
-            <div role="alert" class="alert alert-error alert-outline">
+            <div role="alert" class="alert alert-error alert-soft">
               <span>{errors}</span>
             </div>
           )}
