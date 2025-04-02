@@ -27,16 +27,16 @@ export function LoginPage({ errors = "" }) {
           action={configs.navigation.auth.signIn}
           hx-boost="false"
         >
-          <button class="btn btn-outline btn-secondary w-full" type="submit">
+          <button class="btn btn-outline btn-primary w-full" type="submit">
             {githubButton}
           </button>
 
-          <p class="text-xs text-gray-500">
-            We use GitHub for authentication to keep things simple and secure.
-          </p>
+          {errors && (
+            <div role="alert" class="alert alert-error alert-outline">
+              <span>{errors}</span>
+            </div>
+          )}
         </form>
-
-        {errors && <p class="text-red-500">{errors}</p>}
       </div>
     </div>
   );

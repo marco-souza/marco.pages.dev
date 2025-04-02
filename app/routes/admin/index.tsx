@@ -19,8 +19,7 @@ const relativeUrls = {
 };
 
 app.get("/", async (c) => {
-  const error = c.req.query("error");
-  const errors = error ? "Authentication failed" : "";
+  const errors = c.req.query("errors") ?? "";
 
   return c.render(<LoginPage errors={errors} />);
 });
