@@ -42,6 +42,17 @@ export function setAuthCookies(ctx: Context, token: AccessToken) {
   });
 }
 
+function removePrefix(url: string, prefix = "/admin") {
+  return url.replace(prefix, "");
+}
+
+export const relativeUrls = {
+  signIn: removePrefix(configs.navigation.auth.signIn),
+  callback: removePrefix(configs.navigation.auth.callback),
+  refresh: removePrefix(configs.navigation.auth.refresh),
+  signOut: removePrefix(configs.navigation.auth.signOut),
+};
+
 // init auth module
 
 export const auth = new GitHubAuth({

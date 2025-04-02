@@ -1,22 +1,11 @@
 import { Hono } from "hono";
 import { LoginPage } from "@/components/LoginPage";
 import { configs } from "@/constants";
-import { auth, logout, setAuthCookies } from "@/services/auth";
+import { auth, relativeUrls, logout, setAuthCookies } from "@/services/auth";
 import { raise } from "@/shared/errors";
 import { getCookie } from "hono/cookie";
 
 const app = new Hono<{ Bindings: Cloudflare.Env }>();
-
-function removePrefix(url: string, prefix = "/admin") {
-  return url.replace(prefix, "");
-}
-
-const relativeUrls = {
-  signIn: removePrefix(configs.navigation.auth.signIn),
-  callback: removePrefix(configs.navigation.auth.callback),
-  refresh: removePrefix(configs.navigation.auth.refresh),
-  signOut: removePrefix(configs.navigation.auth.signOut),
-};
 
 app.get("/", async (c) => {
   const errors = c.req.query("errors") ?? "";
