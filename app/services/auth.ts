@@ -55,10 +55,14 @@ export const relativeUrls = {
 
 // init auth module
 
-export const auth = new GitHubAuth({
-  scope: z.string().parse(process.env.GITHUB_SCOPE),
-  client_id: z.string().parse(process.env.GITHUB_CLIENT_ID),
-  client_secret: z.string().parse(process.env.GITHUB_CLIENT_SECRET),
-});
+export const createAuth = (c: Context<{ Bindings: Cloudflare.Env }>) => {
+  const auth = new GitHubAuth({
+    scope: c.env.GITHUB_SCOPE ?? "",
+    client_id: c.env.GITHUB_CLIENT_ID ?? "",
+    client_secret: c.env.GITHUB_CLIENT_SECRET ?? "",
+  });
 
-auth.setUrls(configs.navigation.auth);
+  auth.setUrls(configs.navigation.auth);
+
+  return auth;
+};

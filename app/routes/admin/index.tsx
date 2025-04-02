@@ -1,7 +1,12 @@
 import { Hono } from "hono";
 import { LoginPage } from "@/components/LoginPage";
 import { configs } from "@/constants";
-import { auth, relativeUrls, logout, setAuthCookies } from "@/services/auth";
+import {
+  createAuth,
+  relativeUrls,
+  logout,
+  setAuthCookies,
+} from "@/services/auth";
 import { raise } from "@/shared/errors";
 import { getCookie } from "hono/cookie";
 
@@ -21,6 +26,7 @@ app.get("/", async (c) => {
 });
 
 app.get(relativeUrls.signIn, async (c) => {
+  const auth = createAuth(c);
   const reqUrl = new URL(c.req.url);
   const authUrl = auth.generateAuthUrl(reqUrl.origin);
 
@@ -33,6 +39,7 @@ app.get(relativeUrls.callback, async (c) => {
   const reqUrl = new URL(c.req.url);
   const code = reqUrl.searchParams.get("code") ?? raise("Missing code");
 
+  const auth = createAuth(c);
   const token = await auth.fetchAccessToken(code);
   console.log("User logged", { token });
 
@@ -58,6 +65,8 @@ app.get(relativeUrls.callback, async (c) => {
 });
 
 app.get(relativeUrls.refresh, async (c) => {
+  const auth = createAuth(c);
+
   const refreshToken = getCookie(c, configs.auth.keys.refreshToken);
   if (!refreshToken) {
     return c.redirect(
