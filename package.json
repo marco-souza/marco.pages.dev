@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@hono/zod-validator": "^0.4.3",
+    "@m3o/auth": "npm:@jsr/m3o__auth",
     "hono": "^4.7.5",
     "honox": "^0.1.39",
     "htmx.org": "2.0.4"
@@ -39,7 +40,7 @@
     "vite": "^6.2.4",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.1.1",
-    "wrangler": "^4.6.0"
+    "wrangler": "^4.7.0"
   },
   "trustedDependencies": [
     "@biomejs/biome",
