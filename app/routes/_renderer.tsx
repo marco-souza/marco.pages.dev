@@ -1,9 +1,10 @@
-import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
-import { Link } from "honox/server";
+import { z } from "zod";
 import { Layout } from "@/components/Layout";
+import { Meta } from "@/components/Meta";
 import { getThemeCookie } from "@/shared/theme";
 import { getCookie } from "hono/cookie";
-import { Meta } from "@/components/Meta";
+import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
+import { Link } from "honox/server";
 import { configs } from "../constants";
 
 export default jsxRenderer(({ children }) => {
@@ -14,7 +15,12 @@ export default jsxRenderer(({ children }) => {
       getCookie(ctx, configs.auth.keys.refreshToken),
   );
 
-  const isPartial = ctx.req.query("partial") === "true";
+  const isPartial = z
+    .string()
+    .default("false")
+    .transform((val) => val === "true")
+    .parse(ctx.req.query("partial"));
+
   if (isPartial) {
     return <>{children}</>;
   }
