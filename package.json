@@ -15,7 +15,7 @@
     "w": "wrangler",
     "w:secret": "wrangler pages secret",
     "w:typegen": "[ -f .env ] && cp .env .dev.vars; wrangler types",
-    "preview": "wrangler dev",
+    "preview": "wrangler pages dev",
     "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
