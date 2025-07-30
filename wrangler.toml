@@ -8,6 +8,9 @@ workers_dev = true
 [assets]
 directory = "./dist/"
 
+[observability.logs]
+enabled = true
+
 [observability]
 enabled = true
 
