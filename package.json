@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "tests": "vitest",
-    "build": "vite build --mode client && vite build",
+    "build": "vite build --mode client && vite build && echo _worker.js >> dist/.assetsignore",
     "e2e": "playwright test",
     "fmt": "biome format --fix",
     "lint": "biome lint --fix --unsafe",
@@ -15,8 +15,8 @@
     "w": "wrangler",
     "w:secret": "wrangler pages secret",
     "w:typegen": "[ -f .env ] && cp .env .dev.vars; wrangler types",
-    "preview": "wrangler pages dev",
-    "deploy": "bun run build && wrangler pages deploy"
+    "preview": "wrangler dev",
+    "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.7.2",
