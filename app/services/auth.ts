@@ -1,7 +1,7 @@
-import { z } from "zod";
+import { type AccessToken, GitHubAuth } from "@m3o/auth";
 import type { Context } from "hono";
 import { deleteCookie, setCookie } from "hono/cookie";
-import { GitHubAuth, type AccessToken } from "@m3o/auth";
+import { z } from "zod";
 
 import { configs } from "@/constants";
 

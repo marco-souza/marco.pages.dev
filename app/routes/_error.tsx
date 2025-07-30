@@ -1,4 +1,5 @@
 import type { ErrorHandler } from "hono";
+import ErrorPage from "@/components/ErrorPage";
 
 const handler: ErrorHandler = (e, c) => {
   console.error(e);

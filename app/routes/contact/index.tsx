@@ -1,6 +1,6 @@
-import { z } from "zod";
 import { Hono } from "hono";
-import { ContactForm, ContactFormSuccess } from "#/app/components/ContactForm";
+import { z } from "zod";
+import { ContactForm, ContactFormSuccess } from "@/components/ContactForm";
 
 const app = new Hono<{ Bindings: Cloudflare.Env }>();
 
@@ -13,9 +13,8 @@ app.get("/", async (c) => {
 const ContactDataValidator = z.object({
   name: z.string().nonempty("Name is required").min(3, "Name is too short"),
   email: z
-    .string()
     .email("Invalid email address")
-    .transform((email) => email.replace(/\+.*\@/g, "@")),
+    .transform((email) => email.replace(/\+.*@/g, "@")),
   message: z
     .string()
     .nonempty("Message is required")
@@ -38,7 +37,7 @@ app.post(
         message: "",
       };
 
-      for (const err of data.error.errors) {
+      for (const err of data.error.issues) {
         if (err) {
           if (err.path.includes("name")) {
             errors.name = err.message;
@@ -66,7 +65,7 @@ app.post(
 
 app.get("/success", async (c) => {
   return c.render(
-    <ContactFormSuccess message="I'll take a look and reach you back soon! ☕️" />,
+    <ContactFormSuccess message="I'll take a look and reach you back soon! ☕" />,
   );
 });
 

@@ -1,14 +1,15 @@
 import { Hono } from "hono";
+import { getCookie } from "hono/cookie";
+
 import { LoginPage } from "@/components/LoginPage";
 import { configs } from "@/constants";
 import {
   createAuth,
-  relativeUrls,
   logout,
+  relativeUrls,
   setAuthCookies,
 } from "@/services/auth";
 import { raise } from "@/shared/errors";
-import { getCookie } from "hono/cookie";
 
 const app = new Hono<{ Bindings: Cloudflare.Env }>();
 

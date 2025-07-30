@@ -1,5 +1,5 @@
-import { createRoute } from "honox/factory";
 import { getCookie, setCookie } from "hono/cookie";
+import { createRoute } from "honox/factory";
 
 export const POST = createRoute(async (c) => {
   const { name } = await c.req.parseBody<{ name: string }>();

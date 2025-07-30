@@ -1,5 +1,5 @@
-import { configs } from "@/constants";
 import GithubIcon from "@/components/icons/GitHubIcon";
+import { configs } from "@/constants";
 
 export function LoginPage({ errors = "" }) {
   const githubButton = (

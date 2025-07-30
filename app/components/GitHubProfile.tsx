@@ -1,6 +1,6 @@
 import type { FC } from "hono/jsx";
-import type { GitHubProfile } from "@/services/github";
 import { configs } from "@/constants";
+import type { GitHubProfile } from "@/services/github";
 
 type Props = {
   profile: GitHubProfile;
@@ -21,7 +21,7 @@ export const GitHubProfileCard: FC<Props> = ({ profile, sidebar = false }) => (
 
     <p
       class={`opacity-70 font-extralight text-md px-8 ${!sidebar && "sm:px-16"}`}
-      // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: its safe, truste me
       dangerouslySetInnerHTML={{ __html: parseBioText(profile.bio) }}
     />
   </>
@@ -38,7 +38,7 @@ export const GitHubProfileView: FC<Props> = ({ profile }) => {
             href={configs.navigation.contact}
             class="btn btn-outline text-pink-400 hover:text-white hover:bg-pink-400 hover:animate-zoom-in"
           >
-            Let's grab a Coffee ☕️
+            Let's grab a Coffee ☕
           </a>
 
           <a
@@ -62,7 +62,7 @@ export const GitHubProfileViewSkeleton = () => (
 export function parseBioText(text: string | undefined): string {
   if (text == null) return "";
 
-  const tagRegex = /\@(\w*)/g;
+  const tagRegex = /@(\w*)/g;
   const linksMap: Map<string, string> = new Map(Object.entries(configs.links));
 
   const result = text.replace(tagRegex, (originalText, name: string) => {

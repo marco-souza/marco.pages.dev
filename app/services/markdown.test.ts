@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { classMap, parseHeading, parseBlockquote, parseList } from "./markdown";
+import { classMap, parseBlockquote, parseHeading, parseList } from "./markdown";
 
 test("parseHeading > h1", () => {
   const result = parseHeading("# Heading");

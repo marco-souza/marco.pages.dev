@@ -1,4 +1,4 @@
-import { expect, test, vi, beforeEach } from "vitest";
+import { beforeEach, expect, test, vi } from "vitest";
 import { cache } from "./cache";
 
 const map = new Map<string, string>();
@@ -20,7 +20,7 @@ const kvMocked: KVNamespace = {
       value:
         | string
         | ArrayBuffer
-        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        // biome-ignore lint/suspicious/noExplicitAny: any is required
         | ReadableStream<any>
         | ArrayBufferView<ArrayBufferLike>,
       options?: KVNamespacePutOptions,

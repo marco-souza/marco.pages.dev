@@ -1,9 +1,9 @@
-import { configs } from "@/constants";
 import { getCookie } from "hono/cookie";
 import { createMiddleware } from "hono/factory";
 import { logger } from "hono/logger";
 import { secureHeaders } from "hono/secure-headers";
 import { createRoute } from "honox/factory";
+import { configs } from "@/constants";
 
 const authMiddleware = () =>
   createMiddleware(async (c, next) => {

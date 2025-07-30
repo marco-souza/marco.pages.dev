@@ -16,7 +16,7 @@ export const timeouts = {
   cache: 5 * time.MINUTE,
 };
 
-function contactEmail(email = "marco@tremtec.com") {
+function _contactEmail(email = "marco@tremtec.com") {
   const mailUrl = new URL(`mailto:${email}`);
 
   mailUrl.searchParams.set("subject", "Hey, Marco! Let's grab a coffee ☕");

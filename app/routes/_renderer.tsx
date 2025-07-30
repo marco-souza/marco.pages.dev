@@ -1,15 +1,13 @@
-import { z } from "zod";
-import { Layout } from "@/components/Layout";
-import { Meta } from "@/components/Meta";
-import { getThemeCookie } from "@/shared/theme";
 import { getCookie } from "hono/cookie";
 import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
 import { Link } from "honox/server";
+import { z } from "zod";
+import { Layout } from "@/components/Layout";
+import { Meta } from "@/components/Meta";
 import { configs } from "../constants";
 
 export default jsxRenderer(({ children }) => {
   const ctx = useRequestContext();
-  const theme = getThemeCookie(ctx);
   const isAuthenticated = Boolean(
     getCookie(ctx, configs.auth.keys.authToken) ||
       getCookie(ctx, configs.auth.keys.refreshToken),
@@ -37,11 +35,7 @@ export default jsxRenderer(({ children }) => {
         <Link href="/app/styles.css" rel="stylesheet" />
       </head>
 
-      <Layout
-        theme={theme}
-        title="Hello World 🌎"
-        navbar={{ theme, isAuthenticated }}
-      >
+      <Layout title="Hello World 🌎" navbar={{ isAuthenticated }}>
         {children}
       </Layout>
 

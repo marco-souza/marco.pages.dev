@@ -1,9 +1,10 @@
 import { Hono } from "hono";
-import { z } from "zod";
-import { MusicForm, MusicFormSuccess } from "#/app/components/MusicForm";
 import { getCookie, setCookie } from "hono/cookie";
-import { time } from "#/app/constants";
-import type { TrackDownloadDTO } from "#/app/domain/dto/track";
+import { z } from "zod";
+
+import { MusicForm, MusicFormSuccess } from "@/components/MusicForm";
+import { time } from "@/constants";
+import type { TrackDownloadDTO } from "@/domain/dto/track";
 
 const app = new Hono<{ Bindings: Cloudflare.Env }>();
 
@@ -12,7 +13,6 @@ const YOUTUBE_URL_REGEX =
 
 const MusicDataValidator = z.object({
   youtubeUrl: z
-    .string()
     .url("Invalid URL")
     .regex(YOUTUBE_URL_REGEX, "Invalid YouTube URL"),
 });
@@ -29,7 +29,7 @@ app.post("/", async (c) => {
   if (!data.success) {
     const errors = {
       youtubeUrl:
-        data.error.errors.find((err) => err.path.includes("youtubeUrl"))
+        data.error.issues.find((err) => err.path.includes("youtubeUrl"))
           ?.message || "",
     };
 

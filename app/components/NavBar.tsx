@@ -1,16 +1,13 @@
 import GithubIcon from "@/components/icons/GitHubIcon";
-import { configs } from "@/constants";
 import { Logo } from "@/components/Logo";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
-import type { Theme } from "@/shared/theme.ts";
+import { configs } from "@/constants";
 import { defineMenuLinks } from "@/shared/links";
 
 export type NavBarProps = {
-  theme: Theme;
   isAuthenticated: boolean;
 };
 
-export const NavBar = ({ theme, isAuthenticated }: NavBarProps) => (
+export const NavBar = ({ isAuthenticated }: NavBarProps) => (
   <div class="navbar skip-printer">
     <div class="navbar-start">
       <Menu isAuthenticated={isAuthenticated} />
@@ -21,8 +18,6 @@ export const NavBar = ({ theme, isAuthenticated }: NavBarProps) => (
     </div>
 
     <div class="navbar-end">
-      <ThemeSwitcher theme={theme} />
-
       <a href={configs.repo} target="_black" class="btn btn-ghost btn-circle">
         <GithubIcon />
       </a>

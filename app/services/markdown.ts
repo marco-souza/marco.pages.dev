@@ -10,8 +10,10 @@ export const classMap: ClassMap = {
   list: "list-disc pl-4 py-1",
 };
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-type ParsedMarkdown = { parsed: Record<string, any>; html: string };
+// biome-ignore lint/suspicious/noExplicitAny: any is required
+type ParsedRecord = Record<string, any>;
+
+type ParsedMarkdown = { parsed: ParsedRecord; html: string };
 
 export function parseMarkdown(content: string): ParsedMarkdown {
   if (!content.startsWith("---")) {
@@ -24,11 +26,9 @@ export function parseMarkdown(content: string): ParsedMarkdown {
 
 function parseYaml(metadata: string) {
   const lines = metadata.split("\n");
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  const result: Record<string, any> = {};
+  const result: ParsedRecord = {};
 
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  function parseLine(line: string, obj: Record<string, any>) {
+  function parseLine(line: string, obj: ParsedRecord) {
     const [key, value] = line.split(":").map((part) => part.trim());
     if (key && value !== undefined) {
       obj[key] = value;
