@@ -7,8 +7,8 @@ workers_dev = true
 
 # custom domains - https://developers.cloudflare.com/workers/configuration/routing/custom-domains/
 routes = [
-  { pattern = "m3o.tremtec.com", custom_domain = true },
-  { pattern = "marco.tremtec.com", custom_domain = true }
+  # { pattern = "marco.tremtec.com", custom_domain = true },
+  { pattern = "m3o.tremtec.com", custom_domain = true }
 ]
 
 [assets]
