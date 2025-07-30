@@ -50,5 +50,8 @@
     "lefthook",
     "sharp",
     "workerd"
-  ]
+  ],
+  "volta": {
+    "node": "22.17.1"
+  }
 }
