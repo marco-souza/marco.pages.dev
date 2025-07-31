@@ -22,3 +22,9 @@ export async function cache<T>(
 
   return resolvedValue;
 }
+
+export async function invalidate(kv: KVNamespace, key: string) {
+  console.log("Invalidating cache for", key);
+  await kv.delete(key);
+  console.log("Cache invalidated for", key);
+}
