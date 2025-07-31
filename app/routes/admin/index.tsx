@@ -1,6 +1,5 @@
 import { Hono } from "hono";
 import { getCookie } from "hono/cookie";
-
 import { LoginPage } from "@/components/LoginPage";
 import { configs } from "@/constants";
 import {
