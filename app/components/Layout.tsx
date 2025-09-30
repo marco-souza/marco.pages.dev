@@ -3,7 +3,6 @@ import { Footer } from "@/components/Footer";
 import { NavBar, type NavBarProps } from "@/components/NavBar";
 
 type Props = PropsWithChildren<{
-  title?: string;
   navbar: NavBarProps;
 }>;
 

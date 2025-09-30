@@ -1,8 +1,12 @@
 import { configs } from "@/constants";
 
-const { description, images, pageURL, title } = configs.site;
+const { description, images, pageURL } = configs.site;
 
-export function Meta() {
+type Props = {
+  title?: string;
+};
+
+export function Meta({ title = configs.site.title }: Props) {
   const ogImagePath = `${pageURL}${images.og}`;
   const logoImagePath = `${pageURL}${images.logo}`;
   const iconImagePath = `${pageURL}${images.icon}`;
@@ -11,6 +15,7 @@ export function Meta() {
       <meta charset="UTF-8" />
 
       <title>{title}</title>
+
       <meta name="description" content={description} />
 
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />

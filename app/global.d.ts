@@ -8,9 +8,8 @@ type Head = {
 
 declare module "hono" {
   type ContextRenderer = (
-    content: string | Promise<string>,
-    head?: Head,
-  ) => Response | Promise<Response>;
+      content: string | Promise<string>,
+      head?: Head,) => Response | Promise<Response>
 }
 
 declare module "hono/jsx" {

@@ -13,7 +13,10 @@ app.get("/", async (c) => {
     github.fetchProfile(),
     "github-profile",
   );
-  return c.render(<ResumePage profile={profile} />);
+
+  return c.render(<ResumePage profile={profile} />, {
+    title: "Marco Souza - Resume",
+  });
 });
 
 app.get("/content", async (c) => {

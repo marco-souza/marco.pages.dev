@@ -6,7 +6,7 @@ import { Layout } from "@/components/Layout";
 import { Meta } from "@/components/Meta";
 import { configs } from "../constants";
 
-export default jsxRenderer(({ children }) => {
+export default jsxRenderer(({ children, title }) => {
   const ctx = useRequestContext();
   const isAuthenticated = Boolean(
     getCookie(ctx, configs.auth.keys.authToken) ||
@@ -26,7 +26,7 @@ export default jsxRenderer(({ children }) => {
   return (
     <html lang="en">
       <head>
-        <Meta />
+        <Meta title={title} />
 
         {/* favicon */}
         <Link rel="icon" href={configs.site.images.icon} type="image/x-icon" />
@@ -35,9 +35,7 @@ export default jsxRenderer(({ children }) => {
         <Link href="/app/styles.css" rel="stylesheet" />
       </head>
 
-      <Layout title="Hello World 🌎" navbar={{ isAuthenticated }}>
-        {children}
-      </Layout>
+      <Layout navbar={{ isAuthenticated }}>{children}</Layout>
 
       <script src="/static/js/htmx.min.js" />
     </html>
