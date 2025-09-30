@@ -20,7 +20,7 @@ export default jsxRenderer(async ({ children, Layout }) => {
   const musics = await listMusics(ctx);
 
   const menuItems = [
-    { name: "Overview", href: "/admin", count: null },
+    { name: "Overview", href: "/admin/dashboard", count: null },
     { name: "Playlist", href: "/admin/playlist", count: musics.keys.length },
     { name: "Contacts", href: "/admin/contact", count: messages.keys.length },
   ];

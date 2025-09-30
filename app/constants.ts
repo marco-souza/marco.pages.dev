@@ -63,7 +63,7 @@ export const configs = {
     resume: "/resume",
     music: "/music",
     contact: "/contact",
-    login: "/admin",
+    login: "/login",
 
     auth: {
       signIn: "/admin/auth/signin",

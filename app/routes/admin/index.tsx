@@ -1,6 +1,5 @@
 import { Hono } from "hono";
 import { getCookie } from "hono/cookie";
-import { LoginPage } from "@/components/LoginPage";
 import { configs } from "@/constants";
 import {
   createAuth,
@@ -21,8 +20,8 @@ app.get("/", async (c) => {
     return c.redirect(configs.navigation.private.dashboard);
   }
 
-  const errors = c.req.query("errors") ?? "";
-  return c.render(<LoginPage errors={errors} />);
+  const errors = "Please login to access the dashboard";
+  return c.redirect(`${configs.navigation.login}?errors=${errors}`);
 });
 
 app.get(relativeUrls.signIn, async (c) => {
