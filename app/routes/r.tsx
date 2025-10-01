@@ -3,11 +3,7 @@ import { configs } from "../constants";
 
 const app = new Hono<{ Bindings: Cloudflare.Env }>();
 
-app.get("/gh", async (c) => {
-  return c.redirect(configs.social.github);
-});
-
-app.get("/gh/:repo", async (c) => {
+app.get("/gh/:repo?", async (c) => {
   const repo = `/${c.req.param("repo") ?? ""}`;
   console.log({ repo });
 

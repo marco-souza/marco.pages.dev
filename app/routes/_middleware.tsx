@@ -4,6 +4,7 @@ import { logger } from "hono/logger";
 import { secureHeaders } from "hono/secure-headers";
 import { createRoute } from "honox/factory";
 import { configs } from "@/constants";
+import { trimTrailingSlash } from "hono/trailing-slash";
 
 const authMiddleware = () =>
   createMiddleware(async (c, next) => {
@@ -40,5 +41,5 @@ export default createRoute(
   // auth middleware
   authMiddleware(),
   // other middlewares can be added here
-  // ...
+  trimTrailingSlash(),
 );
