@@ -1,5 +1,5 @@
 export const time = {
-  MILISECONDS: 1,
+  MILLISECONDS: 1,
   SECOND: 1000,
   MINUTE: 60 * 1000,
   HOUR: 60 * 60 * 1000,
@@ -51,6 +51,11 @@ export const configs = {
     mongodb: "https://mongodb.com/",
     paradigm: "https://paradigm.co/",
     tremtec: "https://tremtec.com/",
+  },
+
+  social: {
+    github: "https://github.com/marco-souza",
+    linkedin: "https://linkedin.com/in/masouzajunior",
   },
 
   github: {

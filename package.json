@@ -33,9 +33,9 @@
     "@hono/vite-dev-server": "^0.21.1",
     "@playwright/test": "^1.55.1",
     "@tailwindcss/vite": "^4.1.13",
-    "@types/node": "^24.6.0",
-    "daisyui": "^5.1.25",
-    "lefthook": "^1.13.5",
+    "@types/node": "^24.6.1",
+    "daisyui": "^5.1.26",
+    "lefthook": "^1.13.6",
     "tailwindcss": "^4.1.13",
     "typed-htmx": "^0.3.1",
     "vite": "^7.1.7",
@@ -57,6 +57,6 @@
   },
   "private": true,
   "peerDependencies": {
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   }
 }
